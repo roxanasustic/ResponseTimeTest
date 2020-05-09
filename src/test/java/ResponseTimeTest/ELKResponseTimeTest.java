@@ -13,12 +13,12 @@ public class ELKResponseTimeTest {
     @Test
     public void ResponseTime(){
 
-        RestAssured.baseURI = "http://192.168.99.101:9200/elk/";
-        String json = get("_search?pretty&q=8906d6e1-ef29-4265-9510-b061a7e93127").asString();
+        RestAssured.baseURI = "http://elastic:elastic@192.168.99.101:9200/elk-2020.05.09/";
+        String json = get("_search?pretty&q=uuid.keyword:8906d6e1-ef29-4265-9510-b061a7e93127").asString();
         System.out.println(json);
 
         given().
-                parameters("q","8906d6e1-ef29-4265-9510-b061a7e93127").
+                parameters("q","uuid.keyword:8906d6e1-ef29-4265-9510-b061a7e93127").
                 when().
                 get("_search").
                 then().
